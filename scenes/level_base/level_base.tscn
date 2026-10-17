@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cpc3j2fy17hd"]
+
+[ext_resource type="PackedScene" uid="uid://cfk3jubr8nsjp" path="res://scenes/game_hud/game_hud.tscn" id="1_myc1q"]
+[ext_resource type="Script" uid="uid://cyu81gqvyuav4" path="res://scenes/level_base/LevelBase.gd" id="1_p2h7h"]
+[ext_resource type="TileSet" uid="uid://dqffo5t6mu4o0" path="res://Resources/TileMap.tres" id="3_3tlib"]
+[ext_resource type="PackedScene" uid="uid://c4hfer4hxk4j" path="res://scenes/Player/Player.tscn" id="4_ncu3c"]
+[ext_resource type="PackedScene" uid="uid://mbktcd12m18i" path="res://scenes/KillZone/KillZone.tscn" id="5_kr674"]
+[ext_resource type="PackedScene" uid="uid://oggdd0yg8in1" path="res://scenes/ObjectMaker/ObjectMaker.tscn" id="8_48c0a"]
+[ext_resource type="AudioStream" uid="uid://ch3sva1mxgoc6" path="res://assets/sounds/Farm Frolics.ogg" id="8_cr6la"]
+[ext_resource type="PackedScene" uid="uid://mb68pjlumgo6" path="res://scenes/LevelFlag/LevelFlag.tscn" id="10_uakon"]
+
+[node name="LevelBase" type="Node" unique_id=967511087]
+script = ExtResource("1_p2h7h")
+
+[node name="KillZone" parent="." unique_id=957011244 instance=ExtResource("5_kr674")]
+position = Vector2(238, 794)
+
+[node name="LevelFlag" parent="." unique_id=1442241727 instance=ExtResource("10_uakon")]
+position = Vector2(31, 613)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=527123956]
+
+[node name="GameHud" parent="CanvasLayer" unique_id=1709282964 instance=ExtResource("1_myc1q")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1072441652]
+position = Vector2(18, -2)
+tile_set = ExtResource("3_3tlib")
+
+[node name="Player" parent="." unique_id=660351033 instance=ExtResource("4_ncu3c")]
+position = Vector2(34, 542)
+camera_left = 34
+camera_bottom = 648
+
+[node name="Enemies" type="Node" parent="." unique_id=1183604439]
+
+[node name="ObjectMaker" parent="." unique_id=778887632 instance=ExtResource("8_48c0a")]
+
+[node name="Plants" type="Node" parent="." unique_id=2065881974]
+
+[node name="Paths" type="Node" parent="." unique_id=656461931]
+
+[node name="Coins" type="Node" parent="." unique_id=256737626]
+
+[node name="MovingPlatforms" type="Node" parent="." unique_id=1706870409]
+
+[node name="Dangers" type="Node" parent="." unique_id=664441163]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=141607573]
+stream = ExtResource("8_cr6la")
+autoplay = true
+parameters/looping = true

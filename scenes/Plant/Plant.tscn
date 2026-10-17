@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://dqq60qqrsg7yf"]
+
+[ext_resource type="Script" uid="uid://h46hm6pcfpof" path="res://scenes/Plant/Plant.gd" id="1_7c8u7"]
+[ext_resource type="PackedScene" uid="uid://cpn7fv2td82q3" path="res://scenes/Bullet/Bullet.tscn" id="2_ef1sa"]
+[ext_resource type="Texture2D" uid="uid://b26dx6rt8dhj2" path="res://assets/images/enemies/plant/Plant.png" id="2_v1qni"]
+[ext_resource type="AudioStream" uid="uid://cv4sfr47led01" path="res://assets/sounds/483508__dominikbraun__laser-shot-3.mp3" id="4_lu625"]
+[ext_resource type="AudioStream" uid="uid://dx4an8m5tvthm" path="res://assets/sounds/415058__lilmati__retro-laser-shot-06.wav" id="5_gnr63"]
+
+[sub_resource type="Animation" id="Animation_ef1sa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lu625"]
+resource_name = "idle"
+length = 1.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_gnr63"]
+resource_name = "shoot"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1miu1"]
+_data = {
+&"RESET": SubResource("Animation_ef1sa"),
+&"idle": SubResource("Animation_lu625"),
+&"shoot": SubResource("Animation_gnr63")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ql73s"]
+streams_count = 2
+stream_0/stream = ExtResource("4_lu625")
+stream_1/stream = ExtResource("5_gnr63")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ql73s"]
+radius = 9.0
+height = 28.0
+
+[node name="Plant" type="Node2D" unique_id=1922599968]
+z_index = 35
+script = ExtResource("1_7c8u7")
+bullet_scene = ExtResource("2_ef1sa")
+
+[node name="Timer" type="Timer" parent="." unique_id=1934662181]
+wait_time = 2.0
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1596827669]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_v1qni")
+hframes = 11
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1042654312]
+libraries/ = SubResource("AnimationLibrary_1miu1")
+autoplay = &"idle"
+
+[node name="OnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1686873738]
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=967733846]
+position = Vector2(-13, -0.99999994)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=1180858653]
+stream = SubResource("AudioStreamRandomizer_ql73s")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1283800188]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=245611548]
+position = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_ql73s")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="screen_entered" from="OnScreenNotifier" to="." method="_on_on_screen_notifier_screen_entered"]
+[connection signal="screen_exited" from="OnScreenNotifier" to="." method="_on_screen_exited"]

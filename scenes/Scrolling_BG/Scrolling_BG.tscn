@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://csqpi0rf07g3b"]
+
+[node name="ScrollingBG" type="Node2D" unique_id=479707484]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1768343470]
+scale = Vector2(0.6, 0.6)
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1380686688]
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="." unique_id=733290182]
+scale = Vector2(0.6, 0.6)
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D5" unique_id=825674640]
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=2047717239]
+scale = Vector2(0.6, 0.6)
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1683205884]
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=1890421782]
+scale = Vector2(0.6, 0.6)
+scroll_scale = Vector2(0.9, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=2085666164]
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=180792356]
+scale = Vector2(0.6, 0.6)
+scroll_scale = Vector2(1.1, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4" unique_id=328959346]
+centered = false

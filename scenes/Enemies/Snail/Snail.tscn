@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b6roef2kq5qc4"]
+
+[ext_resource type="Script" uid="uid://dwe5ngar8empy" path="res://scenes/Enemies/Snail/Snail.gd" id="1_njqej"]
+[ext_resource type="PackedScene" uid="uid://dqnhfbptwl25n" path="res://scenes/Enemies/EnemyBase/EnemyBase.tscn" id="1_qjjrf"]
+[ext_resource type="SpriteFrames" uid="uid://ityoak8o0fn4" path="res://Resources/Snail_frames.tres" id="2_c4xa1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njqej"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qfts"]
+radius = 7.0
+
+[node name="Snail" unique_id=509627318 instance=ExtResource("1_qjjrf")]
+z_index = 30
+script = ExtResource("1_njqej")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=214827110]
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("2_c4xa1")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1273049178]
+position = Vector2(1, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_njqej")
+
+[node name="StompBox" parent="." index="4" unique_id=126522146]
+points = 20
+
+[node name="CollisionShape2D" parent="HitArea" parent_id_path=PackedInt32Array(1747529717) index="0" unique_id=100212760]
+shape = SubResource("CircleShape2D_0qfts")

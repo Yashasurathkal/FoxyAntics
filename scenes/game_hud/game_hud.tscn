@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://cfk3jubr8nsjp"]
+
+[ext_resource type="Script" uid="uid://bgw4ldbjl4r40" path="res://scenes/game_hud/game_hud.gd" id="1_7s1mr"]
+[ext_resource type="LabelSettings" uid="uid://dt7q3vx7drglk" path="res://Resources/UILabel24.tres" id="2_xdk5u"]
+[ext_resource type="Texture2D" uid="uid://cia2lk5iwfffm" path="res://assets/items/coin.png" id="3_nfw3n"]
+[ext_resource type="Texture2D" uid="uid://bjybwvokhe7kf" path="res://assets/items/pixel heart 2.png" id="4_3hirk"]
+[ext_resource type="LabelSettings" uid="uid://rqg0vgdgdhgj" path="res://Resources/UILabel86.tres" id="4_nfw3n"]
+[ext_resource type="FontFile" uid="uid://dneel5ip6l2i4" path="res://assets/font/TitanOne-Regular.ttf" id="5_aiwwf"]
+[ext_resource type="AudioStream" uid="uid://ct51snnwewdcl" path="res://assets/sounds/you_win.ogg" id="6_05sa8"]
+[ext_resource type="AudioStream" uid="uid://djt1lyh51id2q" path="res://assets/sounds/game_over.ogg" id="7_3hirk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kum1k"]
+font = ExtResource("5_aiwwf")
+font_size = 48
+font_color = Color(1, 0.2509804, 0.22352941, 1)
+outline_size = 4
+outline_color = Color(0.12941177, 0.3137255, 1, 1)
+
+[node name="GameHud" type="Control" unique_id=1709282964]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7s1mr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2071331598]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+color = Color(0.34901962, 0.4392157, 1, 0.16862746)
+
+[node name="MC" type="MarginContainer" parent="ColorRect" unique_id=725249515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HB" type="HBoxContainer" parent="ColorRect/MC" unique_id=276980315]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 35
+
+[node name="LevelLabel" type="Label" parent="ColorRect/MC/HB" unique_id=930487532]
+layout_mode = 2
+text = "L: 00"
+label_settings = ExtResource("2_xdk5u")
+vertical_alignment = 1
+
+[node name="HBCoins" type="HBoxContainer" parent="ColorRect/MC/HB" unique_id=2069563815]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MC/HB/HBCoins" unique_id=918490509]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_nfw3n")
+expand_mode = 1
+
+[node name="CoinsLabel" type="Label" parent="ColorRect/MC/HB/HBCoins" unique_id=1502239683]
+layout_mode = 2
+text = "00/00"
+label_settings = ExtResource("2_xdk5u")
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="ColorRect/MC/HB" unique_id=1763132829]
+layout_mode = 2
+text = "0000"
+label_settings = ExtResource("2_xdk5u")
+vertical_alignment = 1
+
+[node name="HBHearts" type="HBoxContainer" parent="ColorRect/MC" unique_id=1458527072]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="H1" type="TextureRect" parent="ColorRect/MC/HBHearts" unique_id=158610971]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_3hirk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="H2" type="TextureRect" parent="ColorRect/MC/HBHearts" unique_id=1344976648]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_3hirk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="H3" type="TextureRect" parent="ColorRect/MC/HBHearts" unique_id=878963291]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_3hirk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="H4" type="TextureRect" parent="ColorRect/MC/HBHearts" unique_id=460535084]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_3hirk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="H5" type="TextureRect" parent="ColorRect/MC/HBHearts" unique_id=117346605]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_3hirk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="GameOverRect" type="ColorRect" parent="." unique_id=123575003]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2784314, 0, 0.6156863, 0.5803922)
+
+[node name="VB" type="VBoxContainer" parent="GameOverRect" unique_id=169041221]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CompleteLabel" type="Label" parent="GameOverRect/VB" unique_id=1087225433]
+layout_mode = 2
+text = "Level completed"
+label_settings = ExtResource("4_nfw3n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="GameOverRect/VB" unique_id=61422846]
+layout_mode = 2
+text = "Level completed"
+label_settings = SubResource("LabelSettings_kum1k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinSound" type="AudioStreamPlayer" parent="." unique_id=53600749]
+stream = ExtResource("6_05sa8")
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="." unique_id=255692357]
+stream = ExtResource("7_3hirk")
+
+[node name="Timer" type="Timer" parent="." unique_id=687760644]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

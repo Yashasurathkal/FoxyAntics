@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://bp4imk6avca2a"]
+
+[ext_resource type="PackedScene" uid="uid://cpc3j2fy17hd" path="res://scenes/level_base/level_base.tscn" id="1_wwx6r"]
+[ext_resource type="PackedScene" uid="uid://do01kxijgamak" path="res://scenes/Scrolling_BG/Level3Bg.tscn" id="2_e1hcs"]
+[ext_resource type="PackedScene" uid="uid://dfa36rd8cl1ye" path="res://scenes/Enemies/Chicken/Chicken.tscn" id="2_ym314"]
+[ext_resource type="PackedScene" uid="uid://b6roef2kq5qc4" path="res://scenes/Enemies/Snail/Snail.tscn" id="3_e1hcs"]
+[ext_resource type="PackedScene" uid="uid://cpr8ca4en8qy6" path="res://scenes/Enemies/Pig/Pig.tscn" id="4_ladiv"]
+[ext_resource type="PackedScene" uid="uid://dqq60qqrsg7yf" path="res://scenes/Plant/Plant.tscn" id="5_mt2i3"]
+[ext_resource type="PackedScene" uid="uid://5ccr1uatb0np" path="res://scenes/Coin/Coin.tscn" id="6_moai7"]
+
+[node name="Level3" unique_id=967511087 instance=ExtResource("1_wwx6r")]
+
+[node name="Level3_BG" parent="." index="0" unique_id=479707484 instance=ExtResource("2_e1hcs")]
+z_index = -20
+
+[node name="LevelFlag" parent="." index="2" unique_id=1442241727]
+position = Vector2(65, 409)
+
+[node name="TileMapLayer" parent="." index="4" unique_id=1072441652]
+tile_map_data = PackedByteArray("AAADACAAAAABAAAAAAAEACAAAAACAAAAAAAFACAAAAACAAAAAAAGACAAAAACAAAAAAAHACAAAAACAAcAAAAIACAAAAACAAcAAAAJACAAAAACAAcAAAAKACAAAAACAAcAAAALACAAAAADAAcAAAALAB8AAAADAAYAAAALAB4AAAADAAEAAAAKAB8AAAAEAAUAAAAKAB4AAAACAAEAAAAJAB8AAAACAAYAAAAJAB4AAAACAAEAAAAIAB8AAAACAAYAAAAIAB4AAAACAAEAAAAHAB8AAAABAAYAAAAHAB4AAAABAAEAAAAMABsAAAANAAYAAAALABsAAAAMAAYAAAANABsAAAAOAAQAAAANABwAAAAPAAUAAAANAB0AAAANAAUAAAAOAB0AAAANAAYAAAAPAB0AAAANAAYAAAAQAB0AAAANAAYAAAARAB0AAAANAAYAAAASAB0AAAANAAYAAAATAB0AAAANAAYAAAAUAB0AAAANAAYAAAAVAB0AAAANAAYAAAAWAB0AAAANAAYAAAAXAB0AAAANAAYAAAAYAB0AAAANAAYAAAAZAB0AAAANAAYAAAAaAB0AAAANAAYAAAAbAB0AAAAOAAUAAAAbABwAAAANAAQAAAAcABwAAAAOAAYAAAAdAB0AAAABAAEAAAAdAB4AAAABAAcAAAAeAB4AAAACAAcAAAAfAB4AAAACAAcAAAAgAB4AAAACAAcAAAAhAB4AAAADAAcAAAAhAB0AAAADAAYAAAAgAB0AAAAFAAEAAAAfAB0AAAACAAEAAAAeAB0AAAACAAEAAAAhABwAAAADAAYAAAAhABsAAAAEAAAAAAAgABwAAAABAAYAAAAgABsAAAABAAEAAAAhABoAAAACAAYAAAAhABkAAAACAAEAAAAiABsAAAADAAcAAAAiABoAAAADAAYAAAAiABkAAAADAAEAAAAfABcAAAAOAAYAAAAeABcAAAANAAYAAAAdABcAAAANAAYAAAAcABcAAAANAAYAAAAbABcAAAANAAYAAAAaABcAAAANAAYAAAAZABcAAAANAAYAAAAYABcAAAANAAYAAAAXABcAAAANAAUAAAAXABYAAAAOAAQAAAAWABYAAAANAAYAAAAVABYAAAANAAUAAAAVABUAAAAOAAQAAAAUABUAAAANAAYAAAATABUAAAANAAYAAAASABUAAAANAAUAAAASABQAAAAOAAQAAAARABQAAAANAAYAAAAQABQAAAANAAYAAAAPABQAAAANAAYAAAAOABQAAAANAAYAAAANABQAAAANAAYAAAAMABQAAAANAAQAAAAMABUAAAAPAAUAAAAMABYAAAAOAAUAAAAGABgAAAANAAYAAAAFABgAAAANAAYAAAAEABgAAAANAAYAAAADABgAAAANAAUAAAADABcAAAAOAAQAAAACABcAAAAMAAYAAAAHABgAAAANAAYAAAAIABgAAAANAAYAAAAJABgAAAANAAYAAAAKABgAAAAOAAUAAAAKABcAAAAPAAUAAAAKABYAAAANAAQAAAALABYAAAANAAYAAAA=")
+
+[node name="Player" parent="." index="5" unique_id=660351033]
+position = Vector2(101, 560)
+_starting_lives = 4
+
+[node name="Chicken" parent="Enemies" parent_id_path=PackedInt32Array(1183604439) index="0" unique_id=509627318 instance=ExtResource("2_ym314")]
+position = Vector2(302, 348)
+
+[node name="Snail" parent="Enemies" parent_id_path=PackedInt32Array(1183604439) index="1" unique_id=46475504 instance=ExtResource("3_e1hcs")]
+position = Vector2(569, 513)
+
+[node name="Snail2" parent="Enemies" parent_id_path=PackedInt32Array(1183604439) index="2" unique_id=1296742605 instance=ExtResource("3_e1hcs")]
+position = Vector2(118, 423)
+
+[node name="Pig" parent="Enemies" parent_id_path=PackedInt32Array(1183604439) index="3" unique_id=354872067 instance=ExtResource("4_ladiv")]
+position = Vector2(417, 514)
+
+[node name="Plant" parent="Plants" parent_id_path=PackedInt32Array(2065881974) index="0" unique_id=1922599968 instance=ExtResource("5_mt2i3")]
+position = Vector2(486, 399)
+
+[node name="Plant2" parent="Plants" parent_id_path=PackedInt32Array(2065881974) index="1" unique_id=541710300 instance=ExtResource("5_mt2i3")]
+position = Vector2(301, 503)
+
+[node name="Coin" parent="Coins" parent_id_path=PackedInt32Array(256737626) index="0" unique_id=373372090 instance=ExtResource("6_moai7")]
+position = Vector2(169, 519)
+
+[node name="Coin2" parent="Coins" parent_id_path=PackedInt32Array(256737626) index="1" unique_id=515949507 instance=ExtResource("6_moai7")]
+position = Vector2(238, 470)
+
+[node name="Coin3" parent="Coins" parent_id_path=PackedInt32Array(256737626) index="2" unique_id=1237819353 instance=ExtResource("6_moai7")]
+position = Vector2(487, 510)
+
+[node name="Coin4" parent="Coins" parent_id_path=PackedInt32Array(256737626) index="3" unique_id=1080645372 instance=ExtResource("6_moai7")]
+position = Vector2(628, 437)
+
+[node name="Coin5" parent="Coins" parent_id_path=PackedInt32Array(256737626) index="4" unique_id=198859310 instance=ExtResource("6_moai7")]
+position = Vector2(378, 364)
+
+[node name="Coin6" parent="Coins" parent_id_path=PackedInt32Array(256737626) index="5" unique_id=936937541 instance=ExtResource("6_moai7")]
+position = Vector2(220, 384)
+
+[node name="Coin7" parent="Coins" parent_id_path=PackedInt32Array(256737626) index="6" unique_id=2114647438 instance=ExtResource("6_moai7")]
+position = Vector2(150, 419)

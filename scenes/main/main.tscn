@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://w61qof3tqid1"]
+
+[ext_resource type="Script" uid="uid://bbmvid3obdmm7" path="res://scenes/main/main.gd" id="1_hyk8p"]
+[ext_resource type="FontFile" uid="uid://dneel5ip6l2i4" path="res://assets/font/TitanOne-Regular.ttf" id="2_iuonh"]
+[ext_resource type="Texture2D" uid="uid://l323yy7rmju8" path="res://assets/Backgrounds/Cartoon_Forest_BG_04/Cartoon_Forest_BG_04.png" id="2_k2fmo"]
+[ext_resource type="AudioStream" uid="uid://8fjqsva7gjl7" path="res://assets/sounds/Flowing Rocks.ogg" id="4_l3cfh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2fmo"]
+font = ExtResource("2_iuonh")
+font_size = 96
+font_color = Color(0.7058824, 0.30980393, 0.3137255, 1)
+outline_size = 12
+
+[node name="Main" type="Control" unique_id=2050040072]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hyk8p")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=488033881]
+self_modulate = Color(0.5006195, 0.5006196, 0.5006196, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k2fmo")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=2081814532]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.5
+offset_top = -95.5
+offset_right = 325.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "FOXY ANTICS"
+label_settings = SubResource("LabelSettings_k2fmo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1435168620]
+stream = ExtResource("4_l3cfh")
+autoplay = true
+parameters/looping = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1180837930]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 48
+
+[node name="ScoreGrid" type="GridContainer" parent="MarginContainer" unique_id=1073640331]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 32
+columns = 2

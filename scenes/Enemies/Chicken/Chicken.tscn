@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://dfa36rd8cl1ye"]
+
+[ext_resource type="PackedScene" uid="uid://dqnhfbptwl25n" path="res://scenes/Enemies/EnemyBase/EnemyBase.tscn" id="1_vsgje"]
+[ext_resource type="Script" uid="uid://0xqro66ehutv" path="res://scenes/Enemies/Chicken/Chicken.gd" id="2_irncw"]
+[ext_resource type="Texture2D" uid="uid://c2w2jo5yvsah3" path="res://assets/images/enemies/Bird/Hit (40x48).png" id="3_73pl8"]
+[ext_resource type="Texture2D" uid="uid://b0sogf1sdh0sy" path="res://assets/images/enemies/Bird/Fall (40x48).png" id="4_epqdm"]
+[ext_resource type="Texture2D" uid="uid://bs21uw1keygks" path="res://assets/images/enemies/Bird/Ground (40x48).png" id="5_lqx5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvh5d"]
+atlas = ExtResource("3_73pl8")
+region = Rect2(160, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrwdp"]
+atlas = ExtResource("3_73pl8")
+region = Rect2(120, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85ypd"]
+atlas = ExtResource("3_73pl8")
+region = Rect2(80, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naxi6"]
+atlas = ExtResource("3_73pl8")
+region = Rect2(40, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86ybl"]
+atlas = ExtResource("3_73pl8")
+region = Rect2(0, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_283b5"]
+atlas = ExtResource("4_epqdm")
+region = Rect2(0, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tybj6"]
+atlas = ExtResource("4_epqdm")
+region = Rect2(40, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyd6n"]
+atlas = ExtResource("4_epqdm")
+region = Rect2(80, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2l53"]
+atlas = ExtResource("4_epqdm")
+region = Rect2(120, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmj2a"]
+atlas = ExtResource("5_lqx5p")
+region = Rect2(0, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edhn3"]
+atlas = ExtResource("5_lqx5p")
+region = Rect2(40, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f58u7"]
+atlas = ExtResource("5_lqx5p")
+region = Rect2(80, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cc6s"]
+atlas = ExtResource("5_lqx5p")
+region = Rect2(120, 0, 40, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_irncw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvh5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrwdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85ypd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naxi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86ybl")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_283b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tybj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyd6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2l53")
+}],
+"loop": 2,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmj2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edhn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f58u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cc6s")
+}],
+"loop": 2,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj25p"]
+radius = 7.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73pl8"]
+radius = 8.0
+
+[node name="Chicken" unique_id=509627318 instance=ExtResource("1_vsgje")]
+z_index = 30
+script = ExtResource("2_irncw")
+jump_force = -250.0
+jump_lifetime = 3.0
+walk_duration = 1.5
+gravity_curve = null
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=214827110]
+position = Vector2(1, -1)
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_irncw")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.5081638
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1273049178]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_hj25p")
+
+[node name="StompBox" parent="." index="4" unique_id=126522146]
+position = Vector2(1, -6)
+points = 30
+
+[node name="CollisionShape2D" parent="HitArea" parent_id_path=PackedInt32Array(1747529717) index="0" unique_id=100212760]
+position = Vector2(1, 4)
+shape = SubResource("CircleShape2D_73pl8")
+
+[node name="Timer" parent="." index="6" unique_id=175670099]
+one_shot = true

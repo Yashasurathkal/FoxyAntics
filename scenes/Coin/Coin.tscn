@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://5ccr1uatb0np"]
+
+[ext_resource type="Texture2D" uid="uid://bnqebw5d5ro7b" path="res://assets/items/coins.png" id="1_7n67k"]
+[ext_resource type="Script" uid="uid://dx2lo718koiqh" path="res://scenes/Coin/Coin.gd" id="1_d6u4n"]
+[ext_resource type="AudioStream" uid="uid://bt10omc4qeqa7" path="res://assets/sounds/242857__plasterbrain__coin-get.ogg" id="3_oxu2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0e5i"]
+atlas = ExtResource("1_7n67k")
+region = Rect2(0, 0, 40, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6u4n"]
+atlas = ExtResource("1_7n67k")
+region = Rect2(0, 44, 40, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxu2l"]
+atlas = ExtResource("1_7n67k")
+region = Rect2(0, 88, 40, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2imch"]
+atlas = ExtResource("1_7n67k")
+region = Rect2(0, 132, 40, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql73s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0e5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6u4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxu2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2imch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6u4n")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql73s"]
+radius = 10.049875
+
+[node name="Coin" type="Area2D" unique_id=373372090]
+z_index = 80
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_d6u4n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1931595522]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_ql73s")
+autoplay = "default"
+frame_progress = 0.19791421
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=614762860]
+shape = SubResource("CircleShape2D_ql73s")
+
+[node name="Sound" type="AudioStreamPlayer" parent="." unique_id=1296796907]
+stream = ExtResource("3_oxu2l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=6]
+[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]
